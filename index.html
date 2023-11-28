@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Water Level Indicator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dbd3d3;
+            color: #333;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+        }
+        h4{
+            text-align:left ;
+        }
+
+        h2 {
+            color: #4285f4;
+            
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+            color: #555;
+            text-align: left;
+        }
+
+        code {
+            background-color: #f8f8f8;
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            
+            padding: 2px;
+            margin: 0;
+        }
+
+        li {
+            padding: 3px;
+            text-align: left;
+
+        }
+
+        a {
+            color: #4285f4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .centered-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .normal-image {
+            max-width: 80%;
+            height: 80%;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h5{
+            text-align: left;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Water Level Indicator</h1>
+    </header>
+
+    <section>
+        <p>In this IoT project, a comprehensive guide is provided for the development of a water level indicator 
+        using an ultrasonic sensor, ESP32 microcontroller, and the Blynk IoT platform. The inclusion of a water sensor enhances the functionality of the system. The project details the step-by-step process for creating a straightforward water level monitoring system, integrating hardware components seamlessly with the Blynk platform for real-time monitoring</p>
+     
+       <h2> The hardware needed for this project are</h2>
+        <div class="image-grid">
+            <img src="esp32.jpg" alt="ESP32 Image" class="normal-image">
+            <img src="ultrasonic.jpg" alt="Ultrasonic Sensor Image" class="normal-image">
+            <img src="water.jpg" alt="Water Sensor Image" class="normal-image">
+        </div>
+    
+
+      <br>
+        
+        <ul>
+            <li>ESP32 DEV KIT V1</li>
+            <li>HC-SR04 sensor(Ultrasonic sensor)</li>
+            <li>Water sensor</li>
+        </ul>
+        
+        <p>(Water proof ultrasonic sensor is preferable for this project)</p>
+        <br>
+        <h2>Circuit Connection</h2>
+        <img src="circuit.png" alt="circuit image" class="centered-image">
+        <br>
+        <br>
+
+        <h2>Set up Blynk IoT Cloud</h2>
+        <br>
+        <h4>Create Blynk Template</h4>
+
+        <p>During creating the template, I selected ESP32 as the hardware and the connection type as WiFi.</p>
+        <img src="datastream.png" alt="datastream image" class="centered-image">
+
+        <p>In the template, I have created first datastream(Pin: V0, Datatype: String) to show the whether is full or not .
+            Second datastream (Pin: V1, Datatype: Integer, Min Value: 0, Max Value: 100) to show the water level in tank in percentage
+            </p>
+          <br>
+
+        <h4>Create Web Dashboard</h4>
+        <p>After that, click and drag 1 Gauge widget, and 1 Level widget, and select the related Datastreams for each widget.  </p>
+
+        <img src="webdashboard.png" alt="webdashboard image" class="centered-image">
+
+            <p>Then click on “Save” to save the template</p>
+
+          <br>
+
+        <h2>Libraries and Codes</h2>
+        <p> For this IoT-based project, I have used the Arduino IDE to program ESP32</p>
+        <br>
+        <ul>
+            <li>First update the Preferences –> Aditional boards Manager URLs: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json, 
+                Then install the ESP32 board from the Board manager 
+                </li>
+        </ul>
+        <br>
+       
+        <ul>
+            <li>Blynk library <br>
+                Steps to install blynk library: 
+                
+                
+                <a href="https://docs.blynk.io/en/blynk-library-firmware-api/installation/install-blynk-library-in-arduino-ide" target="_blank">click here</a>.</p>
+    
+                </li>
+        </ul>
+
+            
+            <br>
+             
+    
+             <ul>
+                <li>Source code: 
+                    <a href="https://github.com/bhavyapatgar/IoT-water-level-indicator/blob/main/WaterLevel.ino" target="_blank">click here</a>.</p>
+    
+
+                     
+                    </li>
+            </ul>
+
+            <br>
+   
+        <h2>Results in Blynk app</h2>
+        <img src="empty.png" alt="oytput emptyImage" class="centered-image">
+        <img src="full.png" alt="output full Image" class="centered-image">
+        
+        <p>Created By:</p>
+        <P>Bhavya Mahadev Patgar(4NM21IS035)</P>
+        <P>Harshitha K Karkera(4NM21IS051)</P>
+         <p>Guided By: Dr.Jason Elroy Martis</p><br>
+
+
+
+
+        
+
+    
+</body>
+</html>
